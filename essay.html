@@ -3,26 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MLM — Judgment Before Output — Miguel Castro</title>
-<meta name="description" content="MLM — Judgment Before Output. An essay by Miguel Castro on judgment, AI and creative work.">
+<title>MLM: Judgment Before Output - Miguel Castro</title>
+<meta name="description" content="MLM: Judgment Before Output. An essay by Miguel Castro on judgment, AI and creative work.">
 <meta name="author" content="Miguel Castro">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://miguelcastro.cc/essay.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://miguelcastro.cc/essay.html">
-<meta property="og:title" content="MLM — Judgment Before Output — Miguel Castro">
+<meta property="og:title" content="MLM: Judgment Before Output - Miguel Castro">
 <meta property="og:description" content="An essay by Miguel Castro on judgment, AI and creative work.">
-<meta property="og:image" content="https://miguelcastro.cc/og-image.png">
+<meta property="og:image" content="og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MLM — Judgment Before Output — Miguel Castro">
+<meta name="twitter:title" content="MLM: Judgment Before Output - Miguel Castro">
 <meta name="twitter:description" content="An essay by Miguel Castro on judgment, AI and creative work.">
-<meta name="twitter:image" content="https://miguelcastro.cc/og-image.png">
+<meta name="twitter:image" content="og-image.png">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="favicon.png">
@@ -112,6 +110,32 @@
     background: #111; transform-origin: left center;
   }
 
+  .essay-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 22px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #888;
+  }
+  .essay-breadcrumb a {
+    color: #111;
+    text-decoration: none;
+    transition: color 0.16s ease;
+  }
+  .essay-breadcrumb a:hover,
+  .essay-breadcrumb a:focus-visible {
+    color: #888;
+    outline: none;
+  }
+  .essay-breadcrumb span {
+    color: #aaa;
+  }
+
   .essay-page { padding-top: 44px; }
   .essay-cover {
     min-height: 54vh;
@@ -150,12 +174,40 @@
     font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #888;
     margin-bottom: 16px;
   }
-  .essay-toc { display: flex; flex-direction: column; gap: 8px; max-height: calc(100vh - 150px); overflow: auto; padding-right: 12px; }
-  .essay-toc a {
-    color: #777; text-decoration: none; font-size: 11px; line-height: 1.35;
-    transition: color 0.18s, transform 0.18s;
+  .essay-toc {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-height: calc(100vh - 150px);
+    overflow: auto;
+    padding-right: 12px;
+    border-top: 1px solid #e8e8e8;
   }
-  .essay-toc a:hover { color: #111; transform: translateX(3px); }
+  .essay-toc a {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 14px;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e8e8;
+    color: #777;
+    text-decoration: none;
+    font-size: 11px;
+    line-height: 1.35;
+    transition: color 0.18s, padding-left 0.18s;
+  }
+  .essay-toc a:hover,
+  .essay-toc a:focus-visible {
+    color: #111;
+    padding-left: 3px;
+    outline: none;
+  }
+  .essay-toc-number {
+    font-variant-numeric: tabular-nums;
+    color: #aaa;
+  }
+  .essay-toc-title {
+    color: inherit;
+  }
   .essay-reader {
     max-width: 680px;
     margin: 0 auto;
@@ -182,12 +234,30 @@
   .essay-reader h2:first-child { margin-top: 0; }
   .essay-reader hr { border: none; border-top: 1px solid #e8e8e8; margin: 4.5rem 0; }
   .essay-reader a { color: #111; text-decoration-thickness: 1px; text-underline-offset: 0.14em; }
-  .essay-reader sup {
+  .essay-reader sup.footnote-ref {
     font-family: 'Inter', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.58em;
-    line-height: 0;
+    font-size: 0.68em;
+    line-height: 1;
+    vertical-align: super;
+    margin-left: 0.12em;
   }
-  .essay-reader sup a { text-decoration: none; border-bottom: 1px solid #bbb; }
+  .essay-reader sup.footnote-ref a {
+    color: #111;
+    text-decoration: none;
+    border-bottom: none;
+    font-weight: 500;
+    opacity: 0.72;
+    transition: opacity 0.15s ease, border-color 0.15s ease;
+  }
+  .essay-reader sup.footnote-ref a:hover,
+  .essay-reader sup.footnote-ref a:focus-visible {
+    opacity: 1;
+    outline: none;
+    border-bottom: 1px solid currentColor;
+  }
+  .footnotes li:target {
+    background: linear-gradient(90deg, rgba(0,0,0,0.035), rgba(0,0,0,0));
+  }
   .essay-reader h2#footnotes {
     font-size: 18px;
     letter-spacing: -0.01em;
@@ -238,6 +308,13 @@
   }
   @media (max-width: 680px) {
     .site-nav { padding: 0 20px; }
+    .essay-home-button {
+      left: 20px;
+      bottom: 20px;
+      padding: 7px 10px;
+      font-size: 10px;
+    }
+
     .nav-panel { width: 100%; border-left: none; }
     .essay-cover { grid-template-columns: 1fr; min-height: 54vh; padding: 72px 20px 32px; }
     .essay-kicker { writing-mode: horizontal-tb; transform: none; align-self: auto; margin-bottom: 28px; }
@@ -271,7 +348,6 @@
 
 <div class="nav-overlay" id="navOverlay"></div>
 <div class="nav-panel" id="navPanel">
-  <a href="index.html" class="nav-link">Home</a>
   <a href="index.html#work" class="nav-link">Work</a>
   <a href="index.html#about" class="nav-link">About</a>
   <a href="index.html#experience" class="nav-link">Experience</a>
@@ -281,13 +357,20 @@
 </div>
 </header>
 
+
+
 <div class="reading-progress" id="readingProgress"></div>
 
 <main class="essay-page">
   <section class="essay-cover" aria-label="Essay title">
     <div class="essay-kicker">Essay on AI</div>
     <div>
-      <h1>MLM — Judgment Before Output</h1>
+      <nav class="essay-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Essay on AI</span>
+      </nav>
+      <h1>MLM: Judgment Before Output</h1>
       <p class="essay-meta-line">Miguel Castro · 2026</p>
     </div>
   </section>
@@ -296,24 +379,24 @@
     <aside class="essay-aside" aria-label="Essay contents">
       <p class="essay-aside-label">Contents</p>
       <nav class="essay-toc">
-            <a href="#01-the-object">01 / The Object</a>
-            <a href="#02-the-shift">02 / The Shift</a>
-            <a href="#03-automation">03 / Automation</a>
-            <a href="#04-fluency">04 / Fluency</a>
-            <a href="#05-practice">05 / Practice</a>
-            <a href="#06-friction">06 / Friction</a>
-            <a href="#07-skill">07 / Skill</a>
-            <a href="#08-miguel-s-language-model">08 / Miguel’s Language Model</a>
-            <a href="#09-signal">09 / Signal</a>
-            <a href="#10-invisible">10 / Invisible</a>
-            <a href="#11-insight">11 / Insight</a>
-            <a href="#12-tension">12 / Tension</a>
-            <a href="#13-idea">13 / IDEA</a>
-            <a href="#14-deck">14 / Deck</a>
-            <a href="#15-case">15 / Case</a>
-            <a href="#16-the-sequence">16 / The Sequence</a>
-            <a href="#17-what-it-is-not">17 / What It Is Not</a>
-            <a href="#18-stakes">18 / Stakes</a>
+            <a href="#01-the-object"><span class="essay-toc-number">01</span><span class="essay-toc-title">The Object</span></a>
+            <a href="#02-the-shift"><span class="essay-toc-number">02</span><span class="essay-toc-title">The Shift</span></a>
+            <a href="#03-automation"><span class="essay-toc-number">03</span><span class="essay-toc-title">Automation</span></a>
+            <a href="#04-fluency"><span class="essay-toc-number">04</span><span class="essay-toc-title">Fluency</span></a>
+            <a href="#05-practice"><span class="essay-toc-number">05</span><span class="essay-toc-title">Practice</span></a>
+            <a href="#06-friction"><span class="essay-toc-number">06</span><span class="essay-toc-title">Friction</span></a>
+            <a href="#07-skill"><span class="essay-toc-number">07</span><span class="essay-toc-title">Skill</span></a>
+            <a href="#08-miguel-s-language-model"><span class="essay-toc-number">08</span><span class="essay-toc-title">Miguel’s Language Model</span></a>
+            <a href="#09-signal"><span class="essay-toc-number">09</span><span class="essay-toc-title">Signal</span></a>
+            <a href="#10-invisible"><span class="essay-toc-number">10</span><span class="essay-toc-title">Invisible</span></a>
+            <a href="#11-insight"><span class="essay-toc-number">11</span><span class="essay-toc-title">Insight</span></a>
+            <a href="#12-tension"><span class="essay-toc-number">12</span><span class="essay-toc-title">Tension</span></a>
+            <a href="#13-idea"><span class="essay-toc-number">13</span><span class="essay-toc-title">IDEA</span></a>
+            <a href="#14-deck"><span class="essay-toc-number">14</span><span class="essay-toc-title">Deck</span></a>
+            <a href="#15-case"><span class="essay-toc-number">15</span><span class="essay-toc-title">Case</span></a>
+            <a href="#16-the-sequence"><span class="essay-toc-number">16</span><span class="essay-toc-title">The Sequence</span></a>
+            <a href="#17-what-it-is-not"><span class="essay-toc-number">17</span><span class="essay-toc-title">What It Is Not</span></a>
+            <a href="#18-stakes"><span class="essay-toc-number">18</span><span class="essay-toc-title">Stakes</span></a>
       </nav>
     </aside>
 
@@ -340,7 +423,7 @@ Not as nostalgia for slower work.</p>
 <p>Useful outputs are much harder to distrust.</p>
 <p>The object does not ask to be understood from the beginning. It asks to be improved from where it already stands.</p>
 <p>That small shift matters.</p>
-<p>When we begin from an output, we inherit its assumptions. We react to its frame. We make edits inside its architecture. We correct, polish, compress, expand, adjust. But the deeper operation — deciding whether the thing deserved to exist in that form at all — has already been displaced.<sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup></p>
+<p>When we begin from an output, we inherit its assumptions. We react to its frame. We make edits inside its architecture. We correct, polish, compress, expand, adjust. But the deeper operation - deciding whether the thing deserved to exist in that form at all - has already been displaced.<sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup></p>
 <p>This is how judgment disappears without drama.</p>
 <p>Not because people stop thinking.</p>
 <p>Because the work arrives looking ready enough for thinking to begin too late.</p>
@@ -351,7 +434,7 @@ Not as nostalgia for slower work.</p>
 <p>When a tool gives finished form to unfinished thinking, the human role moves without us noticing.</p>
 <p>We go from forming judgment before output to evaluating output after it appears.</p>
 <p>The shift is quiet because the output is usually useful. The work seems to advance. There is language. There is structure. There is direction.</p>
-<p>But the operations that normally precede those forms — attention, rejection, recognition, doubt, friction, the slow accumulation of unease that points toward refusal or discovery — may have been compressed, skipped or displaced onto an artifact that no longer invites them.</p>
+<p>But the operations that normally precede those forms - attention, rejection, recognition, doubt, friction, the slow accumulation of unease that points toward refusal or discovery - may have been compressed, skipped or displaced onto an artifact that no longer invites them.</p>
 <p>This is not the replacement of thought.</p>
 <p>It is the relocation of thought.</p>
 <p>The effort moves from formation to verification.</p>
@@ -363,7 +446,7 @@ Not as nostalgia for slower work.</p>
 <p>The practitioner becomes less author than monitor: someone asked to detect what the system let through, in a medium whose fluency makes detection harder.<sup class="footnote-ref" id="fnref-3"><a href="#fn-3">3</a></sup></p>
 <h2 id="03-automation">03 / Automation</h2>
 <p>Bainbridge saw a version of this forty years ago, without knowing she was also describing the future of knowledge work.</p>
-<p>She was writing about factories. Her argument was that the more advanced a control system becomes, the harder the human role that remains becomes. The operator must monitor a process they no longer execute, intervene in situations the system could not handle, and maintain a skill that the system itself erodes through disuse.<sup class="footnote-ref" id="fnref-3"><a href="#fn-3">3</a></sup></p>
+<p>She was writing about factories. Her argument was that the more advanced a control system becomes, the harder the human role that remains becomes. The operator must monitor a process they no longer execute, intervene in situations the system could not handle, and maintain a skill that the system itself erodes through disuse.<sup class="footnote-ref" id="fnref-3-2"><a href="#fn-3">3</a></sup></p>
 <p>Ironies of automation, she called it.</p>
 <p>The irony generalizes.</p>
 <p>Someone editing machine drafts is, in Bainbridge’s sense, a monitor.</p>
@@ -390,7 +473,7 @@ It can give the feeling of explanation before the work of explanation has happen
 <p>The surface of understanding without the work that would have produced it.</p>
 <p>This matters because many AI outputs do not only answer. They imply a chain of reasoning. They make cause and effect appear connected. They present conclusions as if the intermediate steps had been walked.</p>
 <p>But often those steps are hidden.</p>
-<p>The answer becomes an explanatory black box with good typography.<sup class="footnote-ref" id="fnref-6"><a href="#fn-6">6</a></sup></p>
+<p>The answer becomes an explanatory black box with good typography.<sup class="footnote-ref" id="fnref-6-2"><a href="#fn-6">6</a></sup></p>
 <p>A polished output can seal the gap it should have exposed.</p>
 <p>That is why fluency becomes dangerous.</p>
 <p>Not because it is false.</p>
@@ -417,7 +500,7 @@ Where the case reveals that the result has started to rewrite the thinking.</p>
 <p>Generative tools, by their nature, tend to polish the almost away. They produce the framing that almost works. They make the awkward part smoother. They close the gap before the practitioner has fully understood what the gap was trying to reveal.</p>
 <p>But the gap is not a defect.</p>
 <p>Sometimes the gap is the idea trying to appear.</p>
-<p>Breakthroughs often come from connections, desperation or contradictions. Not from explaining anomalies away, but from staying with them long enough for the underlying assumption to break.<sup class="footnote-ref" id="fnref-8"><a href="#fn-8">8</a></sup></p>
+<p>Breakthroughs often come from connections, desperation or contradictions. Not from explaining anomalies away, but from staying with them long enough for the underlying assumption to break.<sup class="footnote-ref" id="fnref-8-2"><a href="#fn-8">8</a></sup></p>
 <p>A system optimized for coherence will usually reduce contradiction.</p>
 <p>But contradiction is often the entrance.</p>
 <p>This is the deeper risk.</p>
@@ -536,7 +619,7 @@ What becomes harder to ignore because of it?</p>
 <p>Unseen finds what others missed.<br />
 Gravity tests whether it has weight.<br />
 The Composition Model gives it form.</p>
-<p>These are not scientific claims disguised as science.<sup class="footnote-ref" id="fnref-15"><a href="#fn-15">15</a></sup></p>
+<p>These are not scientific claims disguised as science.<sup class="footnote-ref" id="fnref-15-2"><a href="#fn-15">15</a></sup></p>
 <p>They are conceptual instruments.</p>
 <p>Unseen is the search for latent pressure.<br />
 Gravity is the evaluation of conceptual weight.<br />
@@ -644,7 +727,7 @@ Case reconstructs why it mattered.</p>
 Keep approving.<br />
 Keep circulating.<br />
 Keep moving.</p>
-<p>But action — the act of beginning something, committing to it, revealing oneself through it — becomes harder to locate.</p>
+<p>But action - the act of beginning something, committing to it, revealing oneself through it - becomes harder to locate.</p>
 <p>That is why MLM is not a system for making AI outputs better.</p>
 <p>That would be too small.</p>
 <p>MLM is a system for keeping judgment present before output becomes persuasive enough to trust with something.</p>
@@ -667,7 +750,7 @@ Keep moving.</p>
 <ol>
 <li id="fn-1"><p>Daniel Kahneman, <em>Thinking, Fast and Slow</em> (New York: Farrar, Straus and Giroux, 2011). Publisher page: <a href="https://us.macmillan.com/books/9780374533557/thinkingfastandslow/">Macmillan</a>.<a href="#fnref-1" class="footnote">&#8617;</a></p></li>
 <li id="fn-2"><p>Lev Tankelevitch, Viktor Kewenig, Auste Simkute, Ava Elizabeth Scott, Advait Sarkar, Abigail Sellen and Sean Rintel, “The Metacognitive Demands and Opportunities of Generative AI,” <em>Proceedings of the CHI Conference on Human Factors in Computing Systems</em> (2024). ACM: <a href="https://doi.org/10.1145/3613904.3642902">https://doi.org/10.1145/3613904.3642902</a>.<a href="#fnref-2" class="footnote">&#8617;</a></p></li>
-<li id="fn-3"><p>Lisanne Bainbridge, “Ironies of Automation,” <em>Automatica</em> 19, no. 6 (1983): 775–779. ScienceDirect: <a href="https://doi.org/10.1016/0005-1098(83">https://doi.org/10.1016/0005-1098(83)90046-8</a>90046-8).<a href="#fnref-3" class="footnote">&#8617;</a></p></li>
+<li id="fn-3"><p>Lisanne Bainbridge, “Ironies of Automation,” <em>Automatica</em> 19, no. 6 (1983): 775–779. ScienceDirect: <a href="https://doi.org/10.1016/0005-1098(83)90046-8">https://doi.org/10.1016/0005-1098(83)90046-8</a>.<a href="#fnref-3" class="footnote">&#8617;</a></p></li>
 <li id="fn-4"><p>Raja Parasuraman and Dietrich H. Manzey, “Complacency and Bias in Human Use of Automation: An Attentional Integration,” <em>Human Factors</em> 52, no. 3 (2010): 381–410. DOI: <a href="https://doi.org/10.1177/0018720810376055">https://doi.org/10.1177/0018720810376055</a>. PubMed: <a href="https://pubmed.ncbi.nlm.nih.gov/21077562/">https://pubmed.ncbi.nlm.nih.gov/21077562/</a>.<a href="#fnref-4" class="footnote">&#8617;</a></p></li>
 <li id="fn-5"><p>Adam L. Alter and Daniel M. Oppenheimer, “Uniting the Tribes of Fluency to Form a Metacognitive Nation,” <em>Personality and Social Psychology Review</em> 13, no. 3 (2009): 219–235. DOI: <a href="https://doi.org/10.1177/1088868309341564">https://doi.org/10.1177/1088868309341564</a>. See also Rolf Reber, Norbert Schwarz and Piotr Winkielman, “Processing Fluency and Aesthetic Pleasure: Is Beauty in the Perceiver’s Processing Experience?” <em>Personality and Social Psychology Review</em> 8, no. 4 (2004): 364–382. DOI: <a href="https://doi.org/10.1207/s15327957pspr0804_3">https://doi.org/10.1207/s15327957pspr0804_3</a>.<a href="#fnref-5" class="footnote">&#8617;</a></p></li>
 <li id="fn-6"><p>Leonid Rozenblit and Frank Keil, “The Misunderstood Limits of Folk Science: An Illusion of Explanatory Depth,” <em>Cognitive Science</em> 26, no. 5 (2002): 521–562. ScienceDirect: <a href="https://doi.org/10.1207/s15516709cog2605_1">https://doi.org/10.1207/s15516709cog2605_1</a>. Full text: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3062901/">PMC</a>.<a href="#fnref-6" class="footnote">&#8617;</a></p></li>
