@@ -7,14 +7,12 @@
 <meta name="description" content="Creative Director working from what others miss. Finding overlooked tensions, hidden behaviors and unspoken contradictions across creativity, technology and culture.">
 <meta name="author" content="Miguel Castro">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://miguelcastro.cc">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://miguelcastro.cc">
 <meta property="og:title" content="Miguel Castro — Creative Director">
 <meta property="og:description" content="Creative Director working from what others miss. Finding overlooked tensions, hidden behaviors and unspoken contradictions across creativity, technology and culture.">
-<meta property="og:image" content="https://miguelcastro.cc/og-image.png">
+<meta property="og:image" content="og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
@@ -22,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Miguel Castro — Creative Director">
 <meta name="twitter:description" content="Creative Director working from what others miss.">
-<meta name="twitter:image" content="https://miguelcastro.cc/og-image.png">
+<meta name="twitter:image" content="og-image.png">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="favicon.png">
@@ -814,6 +812,92 @@
     }
     .reveal { opacity: 1; transform: none; }
   }
+
+  /* ---- Final home corrections: full-height hero image ---- */
+  :root {
+    --nav-height: 44px;
+    --name-section-height: clamp(121px, calc(14.08vw + 44px), 175px);
+    --hero-image-height: clamp(420px, calc(100svh - var(--nav-height) - var(--name-section-height)), 760px);
+  }
+
+  .hero-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    min-height: var(--hero-image-height);
+  }
+
+  .hero-left {
+    min-height: var(--hero-image-height);
+    padding: 32px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-right {
+    align-self: stretch;
+    justify-self: end;
+    width: auto;
+    height: var(--hero-image-height);
+    min-height: var(--hero-image-height);
+    max-width: none;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    overflow: visible;
+  }
+
+  .hero-right img,
+  .hero-right .hero-image-placeholder {
+    width: auto;
+    height: 100%;
+    max-width: none;
+    display: block;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .hero-right .hero-image-placeholder {
+    aspect-ratio: 1800 / 1344;
+  }
+
+  @media (max-width: 1100px) {
+    :root {
+      --hero-image-height: clamp(380px, calc(100svh - var(--nav-height) - var(--name-section-height)), 640px);
+    }
+  }
+
+  @media (max-width: 760px) {
+    :root {
+      --hero-image-height: auto;
+    }
+
+    .hero-body {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-left {
+      min-height: auto;
+      padding: 24px 20px;
+    }
+
+    .hero-right {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .hero-right img,
+    .hero-right .hero-image-placeholder {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
 
 </style>
 </head>
