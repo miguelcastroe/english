@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://miguelcastro.cc">
 <meta property="og:title" content="Miguel Castro — Creative Director">
 <meta property="og:description" content="Creative Director working from what others miss. Finding overlooked tensions, hidden behaviors and unspoken contradictions across creativity, technology and culture.">
-<meta property="og:image" content="https://miguelcastro.cc/og.png">
+<meta property="og:image" content="https://miguelcastro.cc/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
@@ -22,11 +22,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Miguel Castro — Creative Director">
 <meta name="twitter:description" content="Creative Director working from what others miss.">
-<meta name="twitter:image" content="https://miguelcastro.cc/og.png">
+<meta name="twitter:image" content="https://miguelcastro.cc/og-image.png">
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -387,6 +386,41 @@
   }
   .about-text p.primary { color: #111; }
 
+  .about-cta {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #111;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: 38ch;
+  }
+  .about-cta strong {
+    font-weight: 500;
+  }
+  .about-cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    color: #111;
+    opacity: 0.9;
+    transform: translateY(1px);
+    transition: transform var(--motion-fast) var(--motion-ease), opacity var(--motion-fast) var(--motion-ease);
+  }
+  .about-cta-icon svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+  }
+  .about-cta:hover .about-cta-icon {
+    transform: translate(2px, -1px);
+    opacity: 1;
+  }
+
   /* ---- Footer ---- */
   footer {
     padding: 20px 0;
@@ -502,10 +536,290 @@
   @media (max-width: 680px) {
     .exp-card { min-width: 240px; max-width: 240px; }
   }
+
+
+  /* ---- Consolidated rebuild overrides ---- */
+  :root {
+    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-fast: 180ms;
+    --motion-med: 320ms;
+    --motion-slow: 620ms;
+  }
+
+  .site-nav {
+    transition: box-shadow var(--motion-med) var(--motion-ease),
+                background-color var(--motion-med) var(--motion-ease);
+  }
+  .site-nav.scrolled { box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+
+  /* Structural sections: Header / Name / Hero */
+  .header-section { position: relative; z-index: 200; }
+  .name-section {
+    padding-top: 44px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .name-section .hero-name { border-bottom: 0; }
+  .hero {
+    padding-top: 0;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .hero-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 42vw);
+    align-items: stretch;
+    min-height: 280px;
+  }
+  .hero-left {
+    min-height: 280px;
+    justify-content: flex-end;
+  }
+  .hero-right {
+    align-self: stretch;
+    justify-self: end;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .hero-right img,
+  .hero-right .hero-image-placeholder {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  .hero-right .hero-image-placeholder { aspect-ratio: 4 / 3; }
+
+  .image-placeholder {
+    display: block;
+    position: relative;
+    width: 100%;
+    background:
+      linear-gradient(135deg, rgba(17,17,17,0.08) 0 1px, transparent 1px 14px),
+      #e0ddd8;
+    overflow: hidden;
+    transform: translateZ(0);
+    transition: transform var(--motion-med) var(--motion-ease),
+                background-color var(--motion-med) var(--motion-ease);
+  }
+  .image-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(17,17,17,0.14);
+    pointer-events: none;
+  }
+  .image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.48), transparent 32%);
+    opacity: 0;
+    transition: opacity var(--motion-med) var(--motion-ease);
+    pointer-events: none;
+  }
+  .hero-right img { transition: none; }
+  .hero-right .image-placeholder { transition: none; }
+  .hero-right .image-placeholder::before,
+  .hero-right .image-placeholder::after { display: none; }
+  .about-image-placeholder { aspect-ratio: 3 / 4; }
+  .about { grid-template-columns: minmax(240px, 360px) 1fr; }
+  .about-photo { width: 100%; max-width: 360px; }
+  .about-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--motion-med) var(--motion-ease);
+  }
+  .about-photo:hover img { transform: translateY(-2px); }
+  .about-photo:hover .image-placeholder { transform: translateY(-2px); }
+  .about-photo:hover .image-placeholder::before { opacity: 1; }
+
+  .work-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 0;
+  }
+  .work-view-toggle {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #e8e8e8;
+    background: #fff;
+    padding: 4px;
+    margin-top: 0;
+  }
+  .work-view-toggle button {
+    border: 0;
+    background: transparent;
+    color: #888;
+    font: inherit;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 11px;
+    cursor: pointer;
+    transition: background var(--motion-fast) var(--motion-ease),
+                color var(--motion-fast) var(--motion-ease),
+                transform var(--motion-fast) var(--motion-ease);
+  }
+  .work-view-toggle button:hover { color: #111; }
+  .work-view-toggle button.active { background: #111; color: #fff; }
+  .work-view-toggle button:active { transform: scale(0.97); }
+
+  .work.is-grid .work-cases {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+  .work.is-grid .case {
+    display: block;
+    padding: 0;
+    gap: 0;
+    transform: none;
+  }
+  .work.is-grid .case::after { display: none; }
+  .work.is-grid .case-video { margin-bottom: 14px; }
+  .work.is-grid .case-title { margin-bottom: 6px; }
+  .work.is-grid .case-desc { margin-bottom: 10px; max-width: 28ch; }
+  .work.is-grid .case-unseen,
+  .work.is-grid .case-role { display: none; }
+  .work.is-grid .case-awards li { display: none; }
+  .work.is-grid .case-awards li:first-child {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #888;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .work.is-grid .case-awards li.gp:first-child {
+    color: #111;
+    font-weight: 500;
+  }
+  .work.is-grid .case-awards li.gp:first-child::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e8a020;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity var(--motion-slow) var(--motion-ease),
+                transform var(--motion-slow) var(--motion-ease);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .hero-name.reveal { transform: translateY(18px); }
+  .hero-caps span.reveal { transition-duration: 520ms; }
+
+  .case {
+    transition: opacity var(--motion-slow) var(--motion-ease),
+                transform var(--motion-med) var(--motion-ease);
+  }
+  .case::after { transition: background var(--motion-med) var(--motion-ease); }
+  .case:hover { transform: translateY(-2px); }
+  .case:hover::after { background: #d8d8d8; }
+  .case-video {
+    transition: background-color var(--motion-med) var(--motion-ease),
+                transform var(--motion-med) var(--motion-ease);
+  }
+  .case:hover .case-video { transform: translateY(-1px); }
+  .work.is-grid .case:hover .case-video { transform: none; }
+  .play-ring {
+    transition: transform var(--motion-fast) var(--motion-ease),
+                border-color var(--motion-fast) var(--motion-ease);
+  }
+  .case-video:hover .play-ring {
+    transform: scale(1.08);
+    border-color: #aaa;
+  }
+
+  .nav-panel a {
+    opacity: 0;
+    transform: translateX(14px);
+    transition: opacity var(--motion-med) var(--motion-ease),
+                transform var(--motion-med) var(--motion-ease),
+                color 0.15s;
+  }
+  .nav-panel.open a { opacity: 1; transform: translateX(0); }
+  .nav-panel.open a:nth-child(1) { transition-delay: 40ms; }
+  .nav-panel.open a:nth-child(2) { transition-delay: 80ms; }
+  .nav-panel.open a:nth-child(3) { transition-delay: 120ms; }
+  .nav-panel.open a:nth-child(4) { transition-delay: 160ms; }
+  .nav-panel.open a:nth-child(5) { transition-delay: 200ms; }
+
+  .exp-card { transition: transform var(--motion-med) var(--motion-ease); }
+  .exp-card:hover { transform: translateY(-3px); }
+  .exp-agency,
+  .exp-role,
+  .exp-desc {
+    transition: color var(--motion-med) var(--motion-ease),
+                transform var(--motion-med) var(--motion-ease);
+  }
+  .exp-card:hover .exp-agency { transform: translateX(3px); }
+  .exp-card:hover .exp-desc { color: #666; }
+  .exp-dot {
+    transition: background 0.2s,
+                transform var(--motion-fast) var(--motion-ease);
+  }
+  .exp-dot:hover { transform: scale(1.45); background: #999; }
+  .exp-dot.active:hover { background: #111; }
+
+  @media (max-width: 960px) {
+    .work.is-grid .work-cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 680px) {
+    .hero-body {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-left { min-height: auto; }
+    .hero-right {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-right img,
+    .hero-right .hero-image-placeholder {
+      width: 100%;
+      height: auto;
+    }
+    .hero-right .hero-image-placeholder { aspect-ratio: 4 / 3; }
+    .work-header { align-items: center; }
+    .work-view-toggle button { padding: 7px 8px; }
+    .work.is-grid .work-cases { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; }
+    .about-photo { max-width: 320px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+
 </style>
 </head>
 <body>
 
+<header class="header-section">
 <nav class="site-nav">
   <a class="nav-ticker" href="mailto:miguel@miguelcastro.cc">
     <div class="nav-ticker-track">
@@ -525,12 +839,17 @@
   <a href="#work" class="nav-link">Work</a>
   <a href="#about" class="nav-link">About</a>
   <a href="#experience" class="nav-link">Experience</a>
+  <a href="essay.html" class="nav-link">Essay on AI</a>
   <a href="mailto:miguel@miguelcastro.cc" class="nav-link">Contact</a>
   <a href="https://www.linkedin.com/in/miguelcastroe/" target="_blank" rel="noopener" class="nav-linkedin nav-link">LinkedIn ↗</a>
 </div>
+</header>
 
-<div class="hero">
+<section class="name-section" aria-label="Name">
   <h1 class="hero-name">Miguel</h1>
+</section>
+
+<section class="hero" aria-label="Hero">
   <div class="hero-body">
     <div class="hero-left">
       <div class="hero-caps">
@@ -544,19 +863,27 @@
       <img src="hero_boy.png" alt="Miguel Castro">
     </div>
   </div>
-</div>
+</section>
 
 <div class="main">
 
   <section class="work" id="work">
-    <p class="section-label">Work</p>
+    <div class="work-header">
+      <p class="section-label">Work</p>
+      <div class="work-view-toggle" aria-label="Work view">
+        <button type="button" class="active" data-work-view="list" aria-pressed="true">List</button>
+        <button type="button" data-work-view="grid" aria-pressed="false">Grid</button>
+      </div>
+    </div>
+    <div class="work-cases">
 
     <div class="case">
       <div class="case-video">
         <div class="video-cover">
           <div class="play-ring"><svg viewBox="0 0 8 8"><polygon points="1,1 7,4 1,7"/></svg></div>
         </div>
-        <iframe src="https://player.vimeo.com/video/951744690?autoplay=0&title=0&byline=0&portrait=0&dnt=1"
+        <iframe src="https://player.vimeo.com/video/951744690?title=0&byline=0&portrait=0&dnt=1"
+          loading="lazy" title="MouthPad^"
           allow="fullscreen" allowfullscreen
           onload="this.closest('.case-video').classList.add('loaded')"></iframe>
       </div>
@@ -579,7 +906,8 @@
         <div class="video-cover">
           <div class="play-ring"><svg viewBox="0 0 8 8"><polygon points="1,1 7,4 1,7"/></svg></div>
         </div>
-        <iframe src="https://player.vimeo.com/video/951723906?autoplay=0&title=0&byline=0&portrait=0&dnt=1"
+        <iframe src="https://player.vimeo.com/video/951723906?title=0&byline=0&portrait=0&dnt=1"
+          loading="lazy" title="Vanishing Emails"
           allow="fullscreen" allowfullscreen
           onload="this.closest('.case-video').classList.add('loaded')"></iframe>
       </div>
@@ -602,7 +930,8 @@
         <div class="video-cover">
           <div class="play-ring"><svg viewBox="0 0 8 8"><polygon points="1,1 7,4 1,7"/></svg></div>
         </div>
-        <iframe src="https://player.vimeo.com/video/1195199689?autoplay=0&title=0&byline=0&portrait=0&dnt=1"
+        <iframe src="https://player.vimeo.com/video/1195199689?title=0&byline=0&portrait=0&dnt=1"
+          loading="lazy" title="Bank on Equality"
           allow="fullscreen" allowfullscreen
           onload="this.closest('.case-video').classList.add('loaded')"></iframe>
       </div>
@@ -612,8 +941,8 @@
         <p class="case-desc">A banking action that returned value equivalent to the wage gap.</p>
         <p class="case-role"><strong>Creative Director</strong> — Concept development and cultural strategy</p>
         <ul class="case-awards">
-          <li>El Ojo, Best Idea, Peru</li>
           <li>Cannes Lions, Bronze, PR</li>
+          <li>El Ojo, Best Idea, Peru</li>
           <li>Clio, Silver, Public Relations — Cause Related</li>
           <li>Clio, Bronze, Public Relations — Corporate Image</li>
           <li>El Ojo, Gold, Direct</li>
@@ -627,7 +956,8 @@
         <div class="video-cover">
           <div class="play-ring"><svg viewBox="0 0 8 8"><polygon points="1,1 7,4 1,7"/></svg></div>
         </div>
-        <iframe src="https://player.vimeo.com/video/1195200005?autoplay=0&title=0&byline=0&portrait=0&dnt=1"
+        <iframe src="https://player.vimeo.com/video/1195200005?title=0&byline=0&portrait=0&dnt=1"
+          loading="lazy" title="Hey! He Is Not a Kid"
           allow="fullscreen" allowfullscreen
           onload="this.closest('.case-video').classList.add('loaded')"></iframe>
       </div>
@@ -651,7 +981,8 @@
         <div class="video-cover">
           <div class="play-ring"><svg viewBox="0 0 8 8"><polygon points="1,1 7,4 1,7"/></svg></div>
         </div>
-        <iframe src="https://player.vimeo.com/video/1047856721?autoplay=0&title=0&byline=0&portrait=0&dnt=1"
+        <iframe src="https://player.vimeo.com/video/1047856721?title=0&byline=0&portrait=0&dnt=1"
+          loading="lazy" title="IRBIN"
           allow="fullscreen" allowfullscreen
           onload="this.closest('.case-video').classList.add('loaded')"></iframe>
       </div>
@@ -671,7 +1002,8 @@
         <div class="video-cover">
           <div class="play-ring"><svg viewBox="0 0 8 8"><polygon points="1,1 7,4 1,7"/></svg></div>
         </div>
-        <iframe src="https://player.vimeo.com/video/1035621612?autoplay=0&title=0&byline=0&portrait=0&dnt=1"
+        <iframe src="https://player.vimeo.com/video/1035621612?title=0&byline=0&portrait=0&dnt=1"
+          loading="lazy" title="Behind The Fear"
           allow="fullscreen" allowfullscreen
           onload="this.closest('.case-video').classList.add('loaded')"></iframe>
       </div>
@@ -684,6 +1016,8 @@
           <li>Bronze, El Ojo Innovation</li>
         </ul>
       </div>
+    </div>
+
     </div>
 
   </section>
@@ -702,6 +1036,14 @@
       <p class="primary">I'm a Creative Director working from what others miss.</p>
       <p>I work at the intersection of creativity, technology and culture. That intersection made me AI-proficient, not as a prompt engineer, but as someone with a method: thinking alongside the machine rather than directing it.</p>
       <p>I find the overlooked tension, the hidden behavior, the unspoken contradiction. Then I stay with it long enough to turn it into something people can use, see or feel.</p>
+      <p class="about-cta">
+        <strong>Bring me in when the idea is promising, but not yet clear enough to survive reality.</strong>
+        <span class="about-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.5 13.5L3 11L2 13L7.5 16.5L5 21L7 22L11 18L14.5 22H17L14.5 15.5L20.5 9.5C21.7 8.3 22 6.4 21.2 5.6C20.4 4.8 18.5 5.1 17.3 6.3L11.5 12.1L5 9.5L4 11L10.5 13.5Z"/>
+          </svg>
+        </span>
+      </p>
     </div>
   </section>
 
@@ -811,77 +1153,146 @@
     var wrap  = document.getElementById('expWrap');
     var track = document.getElementById('expTrack');
     var dotsEl = document.getElementById('expDots');
-    if (!wrap || !track) return;
+    if (!wrap || !track || !dotsEl) return;
 
-    var cards = track.querySelectorAll('.exp-card');
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.exp-card'));
     var total = cards.length;
     var current = 0;
-    var cardW = 0;
+    var maxIndex = 0;
 
-    function getCardW() {
-      return cards[0] ? cards[0].offsetWidth + 40 : 320;
+    function getStep() {
+      if (!cards[0]) return 0;
+      return cards[0].getBoundingClientRect().width;
     }
 
-    var visibleCards = 3;
-    var scrollPositions = total - visibleCards;
+    function calculateMaxIndex() {
+      var step = getStep();
+      if (!step) return 0;
+      var visible = Math.max(1, Math.floor(wrap.clientWidth / step));
+      return Math.max(0, total - visible);
+    }
 
-    // Build dots
-    for (var i = 0; i < scrollPositions; i++) {
-      var d = document.createElement('button');
-      d.className = 'exp-dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Go to ' + (i + 1));
-      d.dataset.i = i;
-      dotsEl.appendChild(d);
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      maxIndex = calculateMaxIndex();
+      for (var i = 0; i <= maxIndex; i++) {
+        var d = document.createElement('button');
+        d.className = 'exp-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to ' + (i + 1));
+        d.dataset.i = i;
+        dotsEl.appendChild(d);
+      }
     }
 
     function goTo(i) {
-      current = Math.max(0, Math.min(i, scrollPositions - 1));
-      cardW = getCardW();
-      track.style.transform = 'translateX(' + (-current * cardW) + 'px)';
+      maxIndex = calculateMaxIndex();
+      current = Math.max(0, Math.min(i, maxIndex));
+      var step = getStep();
+      track.style.transform = 'translateX(' + (-current * step) + 'px)';
       dotsEl.querySelectorAll('.exp-dot').forEach(function (d, idx) {
         d.classList.toggle('active', idx === current);
       });
     }
 
+    buildDots();
+    goTo(0);
+
     dotsEl.addEventListener('click', function (e) {
       var btn = e.target.closest('.exp-dot');
-      if (btn) goTo(parseInt(btn.dataset.i));
+      if (btn) goTo(parseInt(btn.dataset.i, 10));
     });
 
-    // Drag
-    var startX = 0, startScroll = 0, isDragging = false;
+    var startX = 0;
+    var startIndex = 0;
+    var dragging = false;
 
-    wrap.addEventListener('mousedown', function (e) {
-      isDragging = true;
+    wrap.addEventListener('pointerdown', function (e) {
+      dragging = true;
       startX = e.clientX;
-      startScroll = current;
+      startIndex = current;
       wrap.classList.add('dragging');
+      wrap.setPointerCapture(e.pointerId);
     });
-    window.addEventListener('mousemove', function (e) {
-      if (!isDragging) return;
+
+    wrap.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
       var dx = e.clientX - startX;
-      cardW = getCardW();
-      if (Math.abs(dx) > cardW * 0.2) {
-        goTo(dx < 0 ? startScroll + 1 : startScroll - 1);
-        isDragging = false;
+      var step = getStep();
+      if (Math.abs(dx) > Math.max(40, step * 0.18)) {
+        goTo(dx < 0 ? startIndex + 1 : startIndex - 1);
+        dragging = false;
         wrap.classList.remove('dragging');
       }
     });
-    window.addEventListener('mouseup', function () {
-      isDragging = false;
+
+    function stopDrag() {
+      dragging = false;
       wrap.classList.remove('dragging');
+    }
+    wrap.addEventListener('pointerup', stopDrag);
+    wrap.addEventListener('pointercancel', stopDrag);
+
+    window.addEventListener('resize', function () {
+      buildDots();
+      goTo(current);
+    });
+  })();
+
+  // ---- Work view switch ----
+  (function () {
+    var work = document.getElementById('work');
+    if (!work) return;
+    var buttons = work.querySelectorAll('[data-work-view]');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var view = button.getAttribute('data-work-view');
+        work.classList.toggle('is-grid', view === 'grid');
+        buttons.forEach(function (b) {
+          var active = b === button;
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      });
+    });
+  })();
+
+  // ---- Micro-interactions ----
+  (function () {
+    var nav = document.querySelector('.site-nav');
+    function setNavState() {
+      if (!nav) return;
+      nav.classList.toggle('scrolled', window.scrollY > 8);
+    }
+    setNavState();
+    window.addEventListener('scroll', setNavState, { passive: true });
+
+    var revealItems = document.querySelectorAll('.hero-name, .hero-caps span, .case, .pull-quote, .about-photo, .about-text p, .experience .section-label, .exp-card, footer span, footer a');
+    revealItems.forEach(function (el, index) {
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', Math.min(index * 18, 160) + 'ms');
     });
 
-    // Touch
-    var touchStartX = 0;
-    wrap.addEventListener('touchstart', function (e) {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-    wrap.addEventListener('touchend', function (e) {
-      var dx = e.changedTouches[0].clientX - touchStartX;
-      cardW = getCardW();
-      if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
-    }, { passive: true });
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(function (el) { observer.observe(el); });
+    } else {
+      revealItems.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    document.querySelectorAll('.about-photo .image-placeholder').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
   })();
 </script>
 
