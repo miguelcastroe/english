@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miguel Castro — Creative Director</title>
+<title>Miguel Castro - Creative Director</title>
 <meta name="description" content="Creative Director working from what others miss. Finding overlooked tensions, hidden behaviors and unspoken contradictions across creativity, technology and culture.">
 <meta name="author" content="Miguel Castro">
 <meta name="robots" content="index, follow">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Miguel Castro — Creative Director">
+<meta property="og:title" content="Miguel Castro - Creative Director">
 <meta property="og:description" content="Creative Director working from what others miss. Finding overlooked tensions, hidden behaviors and unspoken contradictions across creativity, technology and culture.">
 <meta property="og:image" content="og-image.png">
 <meta property="og:image:width" content="1200">
@@ -18,9 +18,9 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Miguel Castro — Creative Director">
+<meta name="twitter:title" content="Miguel Castro - Creative Director">
 <meta name="twitter:description" content="Creative Director working from what others miss.">
-<meta name="twitter:image" content="og-image">
+<meta name="twitter:image" content="og-image.png">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="favicon.png">
@@ -191,6 +191,33 @@
     color: #111;
     line-height: 1.7;
   }
+  .hero-statement {
+    max-width: 42ch;
+  }
+  .hero-line-primary {
+    font-size: clamp(22px, 3.2vw, 34px) !important;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.12 !important;
+    max-width: 16ch;
+    margin-bottom: 14px;
+  }
+  .hero-line-secondary {
+    font-size: clamp(14px, 1.45vw, 18px) !important;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.45 !important;
+    color: #111;
+    max-width: 38ch;
+    margin-bottom: 18px;
+  }
+  .hero-line-tertiary {
+    font-size: 12px !important;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5 !important;
+    color: #888 !important;
+  }
 
   .hero-right {
     overflow: hidden;
@@ -331,23 +358,6 @@
     display: inline-block;
     flex-shrink: 0;
   }
-
-  /* ---- Pull quotes ---- */
-  .pull-quotes {
-    padding: 72px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .pull-quote {
-    font-size: clamp(18px, 3.5vw, 28px);
-    font-weight: 400;
-    color: #111;
-    line-height: 1.35;
-    letter-spacing: -0.02em;
-    max-width: 22ch;
-  }
-
   /* ---- About ---- */
   .about {
     padding-top: 56px;
@@ -383,6 +393,14 @@
     max-width: 38ch;
   }
   .about-text p.primary { color: #111; }
+
+  .about-proof {
+    margin-top: 18px;
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: #888;
+  }
 
   .about-cta {
     margin-top: 18px;
@@ -457,85 +475,6 @@
     .about-text p { max-width: 100%; }
     .nav-panel { width: 100%; border-left: none; }
   }
-
-  /* ---- Experience carousel ---- */
-  .experience {
-    padding-top: 56px;
-    margin-bottom: 80px;
-    position: relative;
-  }
-  .experience::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 1px;
-    background: #e8e8e8;
-  }
-
-  .exp-track-wrap {
-    overflow: hidden;
-    cursor: grab;
-    user-select: none;
-  }
-  .exp-track-wrap.dragging { cursor: grabbing; }
-
-  .exp-track {
-    display: flex;
-    gap: 0;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .exp-card {
-    min-width: 280px;
-    max-width: 280px;
-    padding-right: 40px;
-    flex-shrink: 0;
-  }
-
-  .exp-agency {
-    font-size: 13px;
-    font-weight: 500;
-    color: #111;
-    letter-spacing: -0.01em;
-    margin-bottom: 3px;
-  }
-  .exp-role {
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 0.02em;
-    margin-bottom: 10px;
-  }
-  .exp-desc {
-    font-size: 12px;
-    color: #888;
-    line-height: 1.65;
-    max-width: 24ch;
-  }
-
-  .exp-dots {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 28px;
-  }
-  .exp-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #e8e8e8;
-    cursor: pointer;
-    transition: background 0.2s;
-    border: none; padding: 0;
-  }
-  .exp-dot.active { background: #111; }
-
-  @media (max-width: 680px) {
-    .exp-card { min-width: 240px; max-width: 240px; }
-  }
-
-
   /* ---- Consolidated rebuild overrides ---- */
   :root {
     --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -754,25 +693,6 @@
   .nav-panel.open a:nth-child(2) { transition-delay: 80ms; }
   .nav-panel.open a:nth-child(3) { transition-delay: 120ms; }
   .nav-panel.open a:nth-child(4) { transition-delay: 160ms; }
-  .nav-panel.open a:nth-child(5) { transition-delay: 200ms; }
-
-  .exp-card { transition: transform var(--motion-med) var(--motion-ease); }
-  .exp-card:hover { transform: translateY(-3px); }
-  .exp-agency,
-  .exp-role,
-  .exp-desc {
-    transition: color var(--motion-med) var(--motion-ease),
-                transform var(--motion-med) var(--motion-ease);
-  }
-  .exp-card:hover .exp-agency { transform: translateX(3px); }
-  .exp-card:hover .exp-desc { color: #666; }
-  .exp-dot {
-    transition: background 0.2s,
-                transform var(--motion-fast) var(--motion-ease);
-  }
-  .exp-dot:hover { transform: scale(1.45); background: #999; }
-  .exp-dot.active:hover { background: #111; }
-
   @media (max-width: 960px) {
     .work.is-grid .work-cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
@@ -922,7 +842,6 @@
 <div class="nav-panel" id="navPanel">
   <a href="#work" class="nav-link">Work</a>
   <a href="#about" class="nav-link">About</a>
-  <a href="#experience" class="nav-link">Experience</a>
   <a href="essay.html" class="nav-link">Essay on AI</a>
   <a href="mailto:miguel@miguelcastro.cc" class="nav-link">Contact</a>
   <a href="https://www.linkedin.com/in/miguelcastroe/" target="_blank" rel="noopener" class="nav-linkedin nav-link">LinkedIn ↗</a>
@@ -936,11 +855,10 @@
 <section class="hero" aria-label="Hero">
   <div class="hero-body">
     <div class="hero-left">
-      <div class="hero-caps">
-        <span>Creative Direction</span>
-        <span>Technology</span>
-        <span>Culture</span>
-        <span>AI</span>
+      <div class="hero-caps hero-statement">
+        <span class="hero-line-primary">Working from what others miss.</span>
+        <span class="hero-line-secondary">I find the quiet failure inside working systems, then make it visible enough to act on.</span>
+        <span class="hero-line-tertiary">Creative Direction · Technology · Culture · AI</span>
       </div>
     </div>
     <div class="hero-right">
@@ -975,7 +893,7 @@
         <p class="case-title">MouthPad^</p>
         <p class="case-unseen">Digital access is not access if the body cannot reach the interface.</p>
         <p class="case-desc">A mouth interface for hands-free digital control.</p>
-        <p class="case-role"><strong>Creative Director, co-directed</strong> — Humanizing the technology</p>
+        <p class="case-role"><strong>Creative Director, co-directed</strong> - Humanizing the technology</p>
         <ul class="case-awards">
           <li class="gp">Cannes Lions, Grand Prix, Innovation</li>
           <li>Cannes Lions, Silver, Health &amp; Wellness</li>
@@ -999,7 +917,7 @@
         <p class="case-title">Vanishing Emails</p>
         <p class="case-unseen">Promotional emails expire, but their footprint does not.</p>
         <p class="case-desc">A tool that makes expired promotional emails disappear.</p>
-        <p class="case-role"><strong>Creative Director, co-directed</strong> — Concept, logic and meaning</p>
+        <p class="case-role"><strong>Creative Director, co-directed</strong> - Concept, logic and meaning</p>
         <ul class="case-awards">
           <li>Cannes Lions, Bronze, Innovation</li>
           <li>Cannes Lions, Shortlist, Titanium</li>
@@ -1023,12 +941,12 @@
         <p class="case-title">Bank on Equality</p>
         <p class="case-unseen">The wage gap was treated as a statistic, but lived as missing financial value.</p>
         <p class="case-desc">A banking action that returned value equivalent to the wage gap.</p>
-        <p class="case-role"><strong>Creative Director</strong> — Concept development and cultural strategy</p>
+        <p class="case-role"><strong>Creative Director</strong> - Concept development and cultural strategy</p>
         <ul class="case-awards">
           <li>Cannes Lions, Bronze, PR</li>
           <li>El Ojo, Best Idea, Peru</li>
-          <li>Clio, Silver, Public Relations — Cause Related</li>
-          <li>Clio, Bronze, Public Relations — Corporate Image</li>
+          <li>Clio, Silver, Public Relations - Cause Related</li>
+          <li>Clio, Bronze, Public Relations - Corporate Image</li>
           <li>El Ojo, Gold, Direct</li>
           <li>El Ojo, Silver, Sustainable</li>
         </ul>
@@ -1049,13 +967,13 @@
         <p class="case-title">Hey! He Is Not a Kid</p>
         <p class="case-unseen">Online grooming hides behind false identity: trust forms around the surface.</p>
         <p class="case-desc">A football intervention exposing online identity deception.</p>
-        <p class="case-role"><strong>Creative Director</strong> — Creative direction and cultural context</p>
+        <p class="case-role"><strong>Creative Director</strong> - Creative direction and cultural context</p>
         <ul class="case-awards">
           <li>Clio Sports, Gold, Social Good</li>
           <li>Clio Sports, Silver, Gameday / In-Game Experience</li>
-          <li>New York Festivals, Gold, PR — Events &amp; Stunts</li>
+          <li>New York Festivals, Gold, PR - Events &amp; Stunts</li>
           <li>El Ojo, Bronze, Sport</li>
-          <li>El Ojo, Bronze, PR — Corporate Social Responsibility</li>
+          <li>El Ojo, Bronze, PR - Corporate Social Responsibility</li>
         </ul>
       </div>
     </div>
@@ -1074,7 +992,7 @@
         <p class="case-title">IRBIN</p>
         <p class="case-unseen">The moment of classification is where people hesitate, guess or fail.</p>
         <p class="case-desc">An intelligent recycling object that helps classify waste.</p>
-        <p class="case-role"><strong>Creative Director</strong> — Concept, creative and technical logic</p>
+        <p class="case-role"><strong>Creative Director</strong> - Concept, creative and technical logic</p>
         <ul class="case-awards">
           <li>Bronze, El Ojo Innovation</li>
         </ul>
@@ -1095,7 +1013,7 @@
         <p class="case-title">Behind The Fear</p>
         <p class="case-unseen">Violence was hidden inside a channel built for ordinary communication.</p>
         <p class="case-desc">A hidden-message mechanism inside email.</p>
-        <p class="case-role"><strong>Creative Director</strong> — Concept, technical direction and meaning</p>
+        <p class="case-role"><strong>Creative Director</strong> - Concept, technical direction and meaning</p>
         <ul class="case-awards">
           <li>Bronze, El Ojo Innovation</li>
         </ul>
@@ -1105,12 +1023,6 @@
     </div>
 
   </section>
-
-  <!-- PULL QUOTES -->
-  <div class="pull-quotes">
-    <p class="pull-quote">The rules hadn't been written yet and you had to invent them as you went.</p>
-  </div>
-
   <section class="about" id="about">
     <div class="about-photo">
       <img src="action-boy.png" alt="Miguel Castro">
@@ -1118,8 +1030,10 @@
     <div class="about-text">
       <p class="section-label">About</p>
       <p class="primary">I'm a Creative Director working from what others miss.</p>
-      <p>I work at the intersection of creativity, technology and culture. That intersection made me AI-proficient, not as a prompt engineer, but as someone with a method: thinking alongside the machine rather than directing it.</p>
-      <p>I find the overlooked tension, the hidden behavior, the unspoken contradiction. Then I stay with it long enough to turn it into something people can use, see or feel.</p>
+      <p>I find the quiet failure inside working systems, then make it visible enough to act on.</p>
+      <p>That means looking for the overlooked tension, the hidden behavior, the unspoken contradiction, and staying with it long enough to turn it into something people can use, see or feel.</p>
+      <p>I use AI as a thinking tool: not to produce faster, but to stay with an idea longer and see it from angles I would otherwise miss.</p>
+      <p class="about-proof">Experience across VML, AKQA, Crispin Porter + Bogusky, Wunderman and MullenLowe.</p>
       <p class="about-cta">
         <strong>Bring me in when the idea is promising, but not yet clear enough to survive reality.</strong>
         <span class="about-cta-icon" aria-hidden="true">
@@ -1130,72 +1044,6 @@
       </p>
     </div>
   </section>
-
-  <!-- EXPERIENCE -->
-  <section class="experience" id="experience">
-    <p class="section-label" style="margin-bottom:28px;">Experience</p>
-    <div class="exp-track-wrap" id="expWrap">
-      <div class="exp-track" id="expTrack">
-
-        <div class="exp-card">
-          <p class="exp-agency">Garnier Agency</p>
-          <p class="exp-role">Creative Director · 2025–2026</p>
-          <p class="exp-desc">Organizing the work, strengthening the team's judgment, pushing ideas that could hold up outside the market they came from.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">VML</p>
-          <p class="exp-role">Senior Creative Director · 2021–2025</p>
-          <p class="exp-desc">Keeping the standard high. Pushing ideas further, keeping the craft honest through tight deadlines, long meetings, creeping doubt.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">Freelance</p>
-          <p class="exp-role">Creative Consultant · 2019–2021</p>
-          <p class="exp-desc">Close to the center of projects. Before the deck, before the campaign, when the idea didn't quite know what it was yet.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">TRUE</p>
-          <p class="exp-role">Associate Creative Director · 2016–2019</p>
-          <p class="exp-desc">Small teams, clients like Adidas and Citroën. Not every important chapter makes noise. Some just tune your eye.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">MullenLowe Group</p>
-          <p class="exp-role">Creative Director · 2014–2015</p>
-          <p class="exp-desc">Leading 35 people through internal change. Deciding faster, holding on to what made each idea worth the fight.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">Liquid Digital Agency</p>
-          <p class="exp-role">Executive Creative Director · 2014</p>
-          <p class="exp-desc">50 people, PepsiCo, BBVA, Claro. Connecting speed, structure, and creative quality without losing judgment.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">Wunderman</p>
-          <p class="exp-role">Creative Director · 2010–2013</p>
-          <p class="exp-desc">Lima wasn't a smaller version of what I'd seen abroad. It was different terrain. Led the digital transformation of Movistar.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">AKQA</p>
-          <p class="exp-role">Copywriter · 2006–2009 · New York</p>
-          <p class="exp-desc">Nike+, Visa, USPS. Learning from Rei Inamoto that creativity didn't have to stop at communication.</p>
-        </div>
-
-        <div class="exp-card">
-          <p class="exp-agency">Crispin Porter + Bogusky</p>
-          <p class="exp-role">Copywriter · 2004–2006 · Miami</p>
-          <p class="exp-desc">One of the agency's first interactive copywriters. The rules hadn't been written yet and you had to invent them as you went.</p>
-        </div>
-
-      </div>
-    </div>
-    <div class="exp-dots" id="expDots"></div>
-  </section>
-
   <footer>
     <span>© 2026 Miguel Castro</span>
   </footer>
@@ -1231,97 +1079,6 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeNav();
   });
-
-  // ---- Experience carousel ----
-  (function () {
-    var wrap  = document.getElementById('expWrap');
-    var track = document.getElementById('expTrack');
-    var dotsEl = document.getElementById('expDots');
-    if (!wrap || !track || !dotsEl) return;
-
-    var cards = Array.prototype.slice.call(track.querySelectorAll('.exp-card'));
-    var total = cards.length;
-    var current = 0;
-    var maxIndex = 0;
-
-    function getStep() {
-      if (!cards[0]) return 0;
-      return cards[0].getBoundingClientRect().width;
-    }
-
-    function calculateMaxIndex() {
-      var step = getStep();
-      if (!step) return 0;
-      var visible = Math.max(1, Math.floor(wrap.clientWidth / step));
-      return Math.max(0, total - visible);
-    }
-
-    function buildDots() {
-      dotsEl.innerHTML = '';
-      maxIndex = calculateMaxIndex();
-      for (var i = 0; i <= maxIndex; i++) {
-        var d = document.createElement('button');
-        d.className = 'exp-dot' + (i === current ? ' active' : '');
-        d.setAttribute('aria-label', 'Go to ' + (i + 1));
-        d.dataset.i = i;
-        dotsEl.appendChild(d);
-      }
-    }
-
-    function goTo(i) {
-      maxIndex = calculateMaxIndex();
-      current = Math.max(0, Math.min(i, maxIndex));
-      var step = getStep();
-      track.style.transform = 'translateX(' + (-current * step) + 'px)';
-      dotsEl.querySelectorAll('.exp-dot').forEach(function (d, idx) {
-        d.classList.toggle('active', idx === current);
-      });
-    }
-
-    buildDots();
-    goTo(0);
-
-    dotsEl.addEventListener('click', function (e) {
-      var btn = e.target.closest('.exp-dot');
-      if (btn) goTo(parseInt(btn.dataset.i, 10));
-    });
-
-    var startX = 0;
-    var startIndex = 0;
-    var dragging = false;
-
-    wrap.addEventListener('pointerdown', function (e) {
-      dragging = true;
-      startX = e.clientX;
-      startIndex = current;
-      wrap.classList.add('dragging');
-      wrap.setPointerCapture(e.pointerId);
-    });
-
-    wrap.addEventListener('pointermove', function (e) {
-      if (!dragging) return;
-      var dx = e.clientX - startX;
-      var step = getStep();
-      if (Math.abs(dx) > Math.max(40, step * 0.18)) {
-        goTo(dx < 0 ? startIndex + 1 : startIndex - 1);
-        dragging = false;
-        wrap.classList.remove('dragging');
-      }
-    });
-
-    function stopDrag() {
-      dragging = false;
-      wrap.classList.remove('dragging');
-    }
-    wrap.addEventListener('pointerup', stopDrag);
-    wrap.addEventListener('pointercancel', stopDrag);
-
-    window.addEventListener('resize', function () {
-      buildDots();
-      goTo(current);
-    });
-  })();
-
   // ---- Work view switch ----
   (function () {
     var work = document.getElementById('work');
@@ -1350,7 +1107,7 @@
     setNavState();
     window.addEventListener('scroll', setNavState, { passive: true });
 
-    var revealItems = document.querySelectorAll('.hero-name, .hero-caps span, .case, .pull-quote, .about-photo, .about-text p, .experience .section-label, .exp-card, footer span, footer a');
+    var revealItems = document.querySelectorAll('.hero-name, .hero-caps span, .case, .about-photo, .about-text p, footer span, footer a');
     revealItems.forEach(function (el, index) {
       el.classList.add('reveal');
       el.style.setProperty('--reveal-delay', Math.min(index * 18, 160) + 'ms');
