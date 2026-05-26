@@ -208,7 +208,7 @@
     letter-spacing: -0.015em;
     line-height: 1.45 !important;
     color: #111;
-    max-width: 38ch;
+    max-width: 42ch;
     margin-bottom: 18px;
   }
   .hero-line-tertiary {
@@ -358,7 +358,71 @@
     display: inline-block;
     flex-shrink: 0;
   }
-  /* ---- About ---- */
+  /* ---- AI Method ---- */
+  .ai-method {
+    padding: 56px 0 72px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .ai-method-copy {
+    max-width: 42ch;
+  }
+  .ai-method-copy p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: #111;
+    margin-bottom: 18px;
+  }
+  .ai-method-list {
+    list-style: none;
+    margin: 0 0 18px;
+    max-width: 42ch;
+    border-top: 1px solid #e8e8e8;
+  }
+  .ai-method-list li {
+    margin: 0;
+    padding: 11px 0;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #888;
+  }
+  .ai-method-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    color: #111;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color var(--motion-fast) var(--motion-ease),
+                transform var(--motion-fast) var(--motion-ease);
+  }
+  .ai-method-link:hover {
+    color: #888;
+    transform: translateX(2px);
+  }
+  .ai-method-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+  .ai-method-link-icon svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+  }
+
+/* ---- About ---- */
   .about {
     padding-top: 56px;
     margin-bottom: 80px;
@@ -366,6 +430,17 @@
     grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: start;
+    position: relative;
+  }
+  .about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: #e8e8e8;
   }
   .about-photo {
     background: #e0ddd8;
@@ -390,7 +465,7 @@
     color: #888;
     line-height: 1.75;
     margin-bottom: 12px;
-    max-width: 38ch;
+    max-width: 42ch;
   }
   .about-text p.primary { color: #111; }
 
@@ -411,7 +486,7 @@
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    max-width: 38ch;
+    max-width: 42ch;
   }
   .about-cta strong {
     font-weight: 500;
@@ -472,6 +547,7 @@
     .main { padding: 0 20px; }
     .case { grid-template-columns: 1fr; }
     .about { grid-template-columns: 1fr; gap: 28px; }
+    .ai-method { grid-template-columns: 1fr; gap: 20px; }
     .about-text p { max-width: 100%; }
     .nav-panel { width: 100%; border-left: none; }
   }
@@ -1023,6 +1099,31 @@
     </div>
 
   </section>
+
+
+  <section class="ai-method" id="ai-method">
+    <p class="section-label">AI as working method</p>
+    <div class="ai-method-copy">
+      <p>I use AI before the work becomes too easy to accept.</p>
+      <ul class="ai-method-list">
+        <li>To find what a brief, report or case is not saying yet.</li>
+        <li>To test whether an idea has gravity or only polish.</li>
+        <li>To turn technical material into something human, useful and culturally legible.</li>
+      </ul>
+      <a class="ai-method-link" href="essay.html">
+        <span class="ai-method-link-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5.5 4.5h8.2a3.8 3.8 0 0 1 3.8 3.8v10.2H9.3A3.8 3.8 0 0 0 5.5 22V4.5Z"/>
+            <path d="M18.5 18.5H10.3A3.8 3.8 0 0 0 6.5 22"/>
+            <path d="M8.4 8.2h6.1"/>
+            <path d="M8.4 11.6h6.1"/>
+          </svg>
+        </span>
+        <span>Read the essay on AI</span>
+      </a>
+    </div>
+  </section>
+
   <section class="about" id="about">
     <div class="about-photo">
       <img src="action-boy.png" alt="Miguel Castro">
@@ -1032,7 +1133,6 @@
       <p class="primary">I'm a Creative Director working from what others miss.</p>
       <p>I find the quiet failure inside working systems, then make it visible enough to act on.</p>
       <p>That means looking for the overlooked tension, the hidden behavior, the unspoken contradiction, and staying with it long enough to turn it into something people can use, see or feel.</p>
-      <p>I use AI as a thinking tool: not to produce faster, but to stay with an idea longer and see it from angles I would otherwise miss.</p>
       <p class="about-proof">Experience across VML, AKQA, Crispin Porter + Bogusky, Wunderman and MullenLowe.</p>
       <p class="about-cta">
         <strong>Bring me in when the idea is promising, but not yet clear enough to survive reality.</strong>
@@ -1107,7 +1207,7 @@
     setNavState();
     window.addEventListener('scroll', setNavState, { passive: true });
 
-    var revealItems = document.querySelectorAll('.hero-name, .hero-caps span, .case, .about-photo, .about-text p, footer span, footer a');
+    var revealItems = document.querySelectorAll('.hero-name, .hero-caps span, .case, .ai-method .section-label, .ai-method-copy p, .ai-method-list li, .ai-method-link, .about-photo, .about-text p, footer span, footer a');
     revealItems.forEach(function (el, index) {
       el.classList.add('reveal');
       el.style.setProperty('--reveal-delay', Math.min(index * 18, 160) + 'ms');
